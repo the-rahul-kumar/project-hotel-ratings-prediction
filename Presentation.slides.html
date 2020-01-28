@@ -13316,7 +13316,7 @@ a.anchor-link {
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">hotels</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
@@ -13332,7 +13332,7 @@ a.anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[22]:</div>
+    <div class="prompt output_prompt">Out[31]:</div>
 
 
 
@@ -13482,7 +13482,7 @@ a.anchor-link {
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">hotels</span><span class="o">.</span><span class="n">dtypes</span>
@@ -13498,7 +13498,7 @@ a.anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[23]:</div>
+    <div class="prompt output_prompt">Out[32]:</div>
 
 
 
@@ -13637,7 +13637,7 @@ dtype: object</pre>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[108]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;140 Gloucester Road Kensington and Chelsea London SW7 4QH United Kingdom&quot;</span>
@@ -13683,6 +13683,567 @@ dtype: object</pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="images/Hotels_Country.png" alt="Hotels_Country"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Data-Relationships">Data Relationships<a class="anchor-link" href="#Data-Relationships">&#182;</a></h3><ul>
+<li>Created a Seaborn Pair Plot to visualise the relationships</li>
+<li>Too much data to visually identify a decent connections</li>
+<li>Heatmap was much more clearer</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="images/PairPlot.png" alt="Pair_Plot"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Heat-Map">Heat Map<a class="anchor-link" href="#Heat-Map">&#182;</a></h4><p><img src="images/heatmap.png" alt="Heat_Map"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Feature-Selection-and-Generation">Feature Selection and Generation<a class="anchor-link" href="#Feature-Selection-and-Generation">&#182;</a></h3><ul>
+<li>Longest process</li>
+<li>Still can be done</li>
+<li>Tags has most information</li>
+<li>Extract Duration of stay</li>
+<li>Look at important Tags</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Extraction-of-Stay-Duration">Extraction of Stay Duration<a class="anchor-link" href="#Extraction-of-Stay-Duration">&#182;</a></h3><ul>
+<li>The Tags are a string</li>
+<li>Using the find function look for Stay and Nights within the string </li>
+<li>Slice the string between the words and extract integer</li>
+<li>"[' Leisure trip ', ' Couple ', ' Duplex Double Room ', ' Stayed 6 nights ']" -&gt; 6</li>
+<li>If the tag doesn't exist - None is returned</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hotels</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[51]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Hotel_Address</th>
+      <th>Additional_Number_of_Scoring</th>
+      <th>Review_Date</th>
+      <th>Average_Score</th>
+      <th>Hotel_Name</th>
+      <th>Reviewer_Nationality</th>
+      <th>Negative_Review</th>
+      <th>Review_Total_Negative_Word_Counts</th>
+      <th>Total_Number_of_Reviews</th>
+      <th>Positive_Review</th>
+      <th>Review_Total_Positive_Word_Counts</th>
+      <th>Total_Number_of_Reviews_Reviewer_Has_Given</th>
+      <th>Reviewer_Score</th>
+      <th>Tags</th>
+      <th>days_since_review</th>
+      <th>lat</th>
+      <th>lng</th>
+      <th>Country</th>
+      <th>Tags_list_length</th>
+      <th>Tag_1</th>
+      <th>Tag_2</th>
+      <th>Tag_3</th>
+      <th>Tag_4</th>
+      <th>Tag_5</th>
+      <th>Tag_6</th>
+      <th>Tags_String</th>
+      <th>Trip_Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>s Gravesandestraat 55 Oost 1092 AA Amsterdam ...</td>
+      <td>194</td>
+      <td>8/3/2017</td>
+      <td>7.7</td>
+      <td>Hotel Arena</td>
+      <td>Russia</td>
+      <td>I am so angry that i made this post available...</td>
+      <td>397</td>
+      <td>1403</td>
+      <td>Only the park outside of the hotel was beauti...</td>
+      <td>11</td>
+      <td>7</td>
+      <td>2.9</td>
+      <td>[[' Leisure trip ',  ' Couple ',  ' Duplex Dou...</td>
+      <td>0 days</td>
+      <td>52.360576</td>
+      <td>4.915968</td>
+      <td>Netherlands</td>
+      <td>4</td>
+      <td>Leisure trip</td>
+      <td>Couple</td>
+      <td>Duplex Double Room</td>
+      <td>Stayed 6 nights</td>
+      <td>None</td>
+      <td>None</td>
+      <td>[' Leisure trip ' ' Couple ' ' Duplex Double R...</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>s Gravesandestraat 55 Oost 1092 AA Amsterdam ...</td>
+      <td>194</td>
+      <td>8/3/2017</td>
+      <td>7.7</td>
+      <td>Hotel Arena</td>
+      <td>Ireland</td>
+      <td>No Negative</td>
+      <td>0</td>
+      <td>1403</td>
+      <td>No real complaints the hotel was great great ...</td>
+      <td>105</td>
+      <td>7</td>
+      <td>7.5</td>
+      <td>[[' Leisure trip ',  ' Couple ',  ' Duplex Dou...</td>
+      <td>0 days</td>
+      <td>52.360576</td>
+      <td>4.915968</td>
+      <td>Netherlands</td>
+      <td>4</td>
+      <td>Leisure trip</td>
+      <td>Couple</td>
+      <td>Duplex Double Room</td>
+      <td>Stayed 4 nights</td>
+      <td>None</td>
+      <td>None</td>
+      <td>[' Leisure trip ' ' Couple ' ' Duplex Double R...</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>s Gravesandestraat 55 Oost 1092 AA Amsterdam ...</td>
+      <td>194</td>
+      <td>7/31/2017</td>
+      <td>7.7</td>
+      <td>Hotel Arena</td>
+      <td>Australia</td>
+      <td>Rooms are nice but for elderly a bit difficul...</td>
+      <td>42</td>
+      <td>1403</td>
+      <td>Location was good and staff were ok It is cut...</td>
+      <td>21</td>
+      <td>9</td>
+      <td>7.1</td>
+      <td>[[' Leisure trip ',  ' Family with young child...</td>
+      <td>3 days</td>
+      <td>52.360576</td>
+      <td>4.915968</td>
+      <td>Netherlands</td>
+      <td>5</td>
+      <td>Leisure trip</td>
+      <td>Family with young children</td>
+      <td>Duplex Double Room</td>
+      <td>Stayed 3 nights</td>
+      <td>Submitted from a mobile device</td>
+      <td>None</td>
+      <td>[' Leisure trip ' ' Family with young children...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>s Gravesandestraat 55 Oost 1092 AA Amsterdam ...</td>
+      <td>194</td>
+      <td>7/31/2017</td>
+      <td>7.7</td>
+      <td>Hotel Arena</td>
+      <td>United Kingdom</td>
+      <td>My room was dirty and I was afraid to walk ba...</td>
+      <td>210</td>
+      <td>1403</td>
+      <td>Great location in nice surroundings the bar a...</td>
+      <td>26</td>
+      <td>1</td>
+      <td>3.8</td>
+      <td>[[' Leisure trip ',  ' Solo traveler ',  ' Dup...</td>
+      <td>3 days</td>
+      <td>52.360576</td>
+      <td>4.915968</td>
+      <td>Netherlands</td>
+      <td>4</td>
+      <td>Leisure trip</td>
+      <td>Solo traveler</td>
+      <td>Duplex Double Room</td>
+      <td>Stayed 3 nights</td>
+      <td>None</td>
+      <td>None</td>
+      <td>[' Leisure trip ' ' Solo traveler ' ' Duplex D...</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>s Gravesandestraat 55 Oost 1092 AA Amsterdam ...</td>
+      <td>194</td>
+      <td>7/24/2017</td>
+      <td>7.7</td>
+      <td>Hotel Arena</td>
+      <td>New Zealand</td>
+      <td>You When I booked with your company on line y...</td>
+      <td>140</td>
+      <td>1403</td>
+      <td>Amazing location and building Romantic setting</td>
+      <td>8</td>
+      <td>3</td>
+      <td>6.7</td>
+      <td>[[' Leisure trip ',  ' Couple ',  ' Suite ',  ...</td>
+      <td>10 days</td>
+      <td>52.360576</td>
+      <td>4.915968</td>
+      <td>Netherlands</td>
+      <td>5</td>
+      <td>Leisure trip</td>
+      <td>Couple</td>
+      <td>Suite</td>
+      <td>Stayed 2 nights</td>
+      <td>Submitted from a mobile device</td>
+      <td>None</td>
+      <td>[' Leisure trip ' ' Couple ' ' Suite ' ' Staye...</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Seperation-of-Tags">Seperation of Tags<a class="anchor-link" href="#Seperation-of-Tags">&#182;</a></h3><ul>
+<li>Convert the string to a list</li>
+<li>Calculate the largest number of Tags, which is 6</li>
+<li>Create Columns Named Tags_1 to Tags_6</li>
+<li>Using Values.tolist() Populate the columns with Tags</li>
+<li>Clean up Strings by removing symbols and odd spacings</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hotels</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[49]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Hotel_Address</th>
+      <th>Additional_Number_of_Scoring</th>
+      <th>Review_Date</th>
+      <th>Average_Score</th>
+      <th>Hotel_Name</th>
+      <th>Reviewer_Nationality</th>
+      <th>Negative_Review</th>
+      <th>Review_Total_Negative_Word_Counts</th>
+      <th>Total_Number_of_Reviews</th>
+      <th>Positive_Review</th>
+      <th>Review_Total_Positive_Word_Counts</th>
+      <th>Total_Number_of_Reviews_Reviewer_Has_Given</th>
+      <th>Reviewer_Score</th>
+      <th>Tags</th>
+      <th>days_since_review</th>
+      <th>lat</th>
+      <th>lng</th>
+      <th>Country</th>
+      <th>Tags_list_length</th>
+      <th>Tag_1</th>
+      <th>Tag_2</th>
+      <th>Tag_3</th>
+      <th>Tag_4</th>
+      <th>Tag_5</th>
+      <th>Tag_6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>s Gravesandestraat 55 Oost 1092 AA Amsterdam ...</td>
+      <td>194</td>
+      <td>8/3/2017</td>
+      <td>7.7</td>
+      <td>Hotel Arena</td>
+      <td>Russia</td>
+      <td>I am so angry that i made this post available...</td>
+      <td>397</td>
+      <td>1403</td>
+      <td>Only the park outside of the hotel was beauti...</td>
+      <td>11</td>
+      <td>7</td>
+      <td>2.9</td>
+      <td>[[' Leisure trip ',  ' Couple ',  ' Duplex Dou...</td>
+      <td>0 days</td>
+      <td>52.360576</td>
+      <td>4.915968</td>
+      <td>Netherlands</td>
+      <td>4</td>
+      <td>Leisure trip</td>
+      <td>Couple</td>
+      <td>Duplex Double Room</td>
+      <td>Stayed 6 nights</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>s Gravesandestraat 55 Oost 1092 AA Amsterdam ...</td>
+      <td>194</td>
+      <td>8/3/2017</td>
+      <td>7.7</td>
+      <td>Hotel Arena</td>
+      <td>Ireland</td>
+      <td>No Negative</td>
+      <td>0</td>
+      <td>1403</td>
+      <td>No real complaints the hotel was great great ...</td>
+      <td>105</td>
+      <td>7</td>
+      <td>7.5</td>
+      <td>[[' Leisure trip ',  ' Couple ',  ' Duplex Dou...</td>
+      <td>0 days</td>
+      <td>52.360576</td>
+      <td>4.915968</td>
+      <td>Netherlands</td>
+      <td>4</td>
+      <td>Leisure trip</td>
+      <td>Couple</td>
+      <td>Duplex Double Room</td>
+      <td>Stayed 4 nights</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>s Gravesandestraat 55 Oost 1092 AA Amsterdam ...</td>
+      <td>194</td>
+      <td>7/31/2017</td>
+      <td>7.7</td>
+      <td>Hotel Arena</td>
+      <td>Australia</td>
+      <td>Rooms are nice but for elderly a bit difficul...</td>
+      <td>42</td>
+      <td>1403</td>
+      <td>Location was good and staff were ok It is cut...</td>
+      <td>21</td>
+      <td>9</td>
+      <td>7.1</td>
+      <td>[[' Leisure trip ',  ' Family with young child...</td>
+      <td>3 days</td>
+      <td>52.360576</td>
+      <td>4.915968</td>
+      <td>Netherlands</td>
+      <td>5</td>
+      <td>Leisure trip</td>
+      <td>Family with young children</td>
+      <td>Duplex Double Room</td>
+      <td>Stayed 3 nights</td>
+      <td>Submitted from a mobile device</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>s Gravesandestraat 55 Oost 1092 AA Amsterdam ...</td>
+      <td>194</td>
+      <td>7/31/2017</td>
+      <td>7.7</td>
+      <td>Hotel Arena</td>
+      <td>United Kingdom</td>
+      <td>My room was dirty and I was afraid to walk ba...</td>
+      <td>210</td>
+      <td>1403</td>
+      <td>Great location in nice surroundings the bar a...</td>
+      <td>26</td>
+      <td>1</td>
+      <td>3.8</td>
+      <td>[[' Leisure trip ',  ' Solo traveler ',  ' Dup...</td>
+      <td>3 days</td>
+      <td>52.360576</td>
+      <td>4.915968</td>
+      <td>Netherlands</td>
+      <td>4</td>
+      <td>Leisure trip</td>
+      <td>Solo traveler</td>
+      <td>Duplex Double Room</td>
+      <td>Stayed 3 nights</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>s Gravesandestraat 55 Oost 1092 AA Amsterdam ...</td>
+      <td>194</td>
+      <td>7/24/2017</td>
+      <td>7.7</td>
+      <td>Hotel Arena</td>
+      <td>New Zealand</td>
+      <td>You When I booked with your company on line y...</td>
+      <td>140</td>
+      <td>1403</td>
+      <td>Amazing location and building Romantic setting</td>
+      <td>8</td>
+      <td>3</td>
+      <td>6.7</td>
+      <td>[[' Leisure trip ',  ' Couple ',  ' Suite ',  ...</td>
+      <td>10 days</td>
+      <td>52.360576</td>
+      <td>4.915968</td>
+      <td>Netherlands</td>
+      <td>5</td>
+      <td>Leisure trip</td>
+      <td>Couple</td>
+      <td>Suite</td>
+      <td>Stayed 2 nights</td>
+      <td>Submitted from a mobile device</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Category-Types">Category Types<a class="anchor-link" href="#Category-Types">&#182;</a></h2><p>Using Dataframe manipulation</p>
+<ul>
+<li>Number of Tags = 2801208 (Not Unique Values)</li>
+</ul>
+<p>With that number, there seems to be an excessive amount of tags. Most are just room descriptions. As important as room types could be in a review, in this project they were ignored. The Tags that will be looked at are:</p>
+<ul>
+<li>None Values(No Tag)/Submitted from a mobile device/Stayed - 0 (As they dont bring info or are feature columns already)</li>
+<li>Leisure Trip - 1</li>
+<li>Couple - 2</li>
+<li>Solo Traveler - 3</li>
+<li>Business Trip - 4</li>
+<li>Group - 5</li>
+<li>Family - Young or Old - 6</li>
+<li>Other - 7</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Potential-Feature-Future-Columns-and-Tags">Potential Feature Future Columns and Tags<a class="anchor-link" href="#Potential-Feature-Future-Columns-and-Tags">&#182;</a></h3><ul>
+<li>Submitted from a mobile device</li>
+<li>Room Types<ul>
+<li>Double</li>
+<li>Single</li>
+<li>King or Queen</li>
+<li>Suites ect</li>
+</ul>
+</li>
+</ul>
 
 </div>
 </div>
