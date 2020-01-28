@@ -13263,7 +13263,7 @@ a.anchor-link {
 <h2 id="The-Review-Data">The Review Data<a class="anchor-link" href="#The-Review-Data">&#182;</a></h2><h4 id="Acknowledgements">Acknowledgements<a class="anchor-link" href="#Acknowledgements">&#182;</a></h4><p>The data was scraped from Booking.com by <a href="https://www.kaggle.com/jiashenliu">Jason Liu</a></p>
 <h4 id="Data-Context">Data Context<a class="anchor-link" href="#Data-Context">&#182;</a></h4><ul>
 <li>515,000 customer reviews</li>
-<li>1493 luxury hotels within Europe</li>
+<li>1492 luxury hotels within Europe</li>
 </ul>
 
 </div>
@@ -13316,7 +13316,7 @@ a.anchor-link {
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">hotels</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
@@ -13332,7 +13332,7 @@ a.anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[7]:</div>
+    <div class="prompt output_prompt">Out[22]:</div>
 
 
 
@@ -13465,7 +13465,228 @@ a.anchor-link {
 </div>
 </div>
 
-</div></div></section></section>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Explatory-Data-Analysis">Explatory Data Analysis<a class="anchor-link" href="#Explatory-Data-Analysis">&#182;</a></h2><p>The Data was in a workable state and not much primary cleaning had to be done.</p>
+<ul>
+<li>Basic Text Cleaning</li>
+<li>Dropped Null Values</li>
+<li>Basic Text and Dataframe Manipulation</li>
+<li>Some relationships were observed</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hotels</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[23]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Hotel_Address                                  object
+Additional_Number_of_Scoring                    int64
+Review_Date                                    object
+Average_Score                                 float64
+Hotel_Name                                     object
+Reviewer_Nationality                           object
+Negative_Review                                object
+Review_Total_Negative_Word_Counts               int64
+Total_Number_of_Reviews                         int64
+Positive_Review                                object
+Review_Total_Positive_Word_Counts               int64
+Total_Number_of_Reviews_Reviewer_Has_Given      int64
+Reviewer_Score                                float64
+Tags                                           object
+days_since_review                              object
+lat                                           float64
+lng                                           float64
+dtype: object</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Data-Types">Data Types<a class="anchor-link" href="#Data-Types">&#182;</a></h4><ul>
+<li>Object<ul>
+<li>Text Strings</li>
+<li>List</li>
+</ul>
+</li>
+<li>Integer<ul>
+<li>Only Additional Number of Scoring</li>
+</ul>
+</li>
+<li>Float<ul>
+<li>Scores</li>
+<li>Latitude, Longitude</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Trimming-the-Data">Trimming the Data<a class="anchor-link" href="#Trimming-the-Data">&#182;</a></h3><ul>
+<li>Large Data set<ul>
+<li>515738 Entries</li>
+<li>17 Features Columns</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Exclude Hotels that have entries &lt; 150 Reviews<ul>
+<li>466868 Entries</li>
+<li>17 Feature Columns</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Data-Visualisation">Data Visualisation<a class="anchor-link" href="#Data-Visualisation">&#182;</a></h3><ul>
+<li>Relationships between potential predicition labels and the predicted review score<ul>
+<li>Total Review Count</li>
+<li>Word Count</li>
+<li>Negative and Positive Review Word Count</li>
+</ul>
+</li>
+</ul>
+<p>This helps towards Feature Selection</p>
+
+<pre><code>- Hint: Only the Number of Reviews given by Reviewer ends up being used.</code></pre>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="images/trim_review_score_freq.png" alt="Review_Score"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="images/top_10_scoring_nationality.png" alt="Top_10"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="images/bottom_5_scoring_nationality.png" alt="Bottom_5"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Extracting-Country">Extracting Country<a class="anchor-link" href="#Extracting-Country">&#182;</a></h3><ul>
+<li>Using Library called <a href="https://pypi.org/project/pycountry/">PyCountry</a></li>
+<li>We can Extract the Country from a string.</li>
+<li>Shown how it was done below</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[108]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;140 Gloucester Road Kensington and Chelsea London SW7 4QH United Kingdom&quot;</span>
+<span class="k">for</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">pycountry</span><span class="o">.</span><span class="n">countries</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">country</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">country</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>United Kingdom
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>No need for Lat and Lon</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="images/Hotels_Country.png" alt="Hotels_Country"></p>
+
+</div>
+</div>
+</div></section></section>
 </div>
 </div>
 
